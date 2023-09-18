@@ -1,0 +1,12 @@
+{
+    "name": "C/C++test",
+    "image": "iar-parasoft:latest",
+    "runArgs": ["--rm"],
+    "extensions": ["parasoft.vscode-cpptest", "ms-vscode.cmake-tools"],
+    "settings": {
+        "cpptest.installationLocation": "/opt/parasoft/cpptest-coverage/",
+        "cpptest.compilerIdentifier": "iccarm_9_20",
+        "cpptest.testConfiguration": "builtin://MISRA C 2012"
+    },
+    "mounts": ["type=bind,src=${localEnv:HOME}/.ssh,dst=/home/ciuser/.ssh"]
+}

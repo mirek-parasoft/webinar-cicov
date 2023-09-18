@@ -1,5 +1,5 @@
 # CMake requires to set its minimum required version
-cmake_minimum_required(VERSION 3.23)
+cmake_minimum_required(VERSION 3.21)
 
 # Set the project name, enabling its required languages (e.g. ASM, C and/or CXX)   
 project(simpleProject LANGUAGES C CXX)
