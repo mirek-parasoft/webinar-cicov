@@ -38,7 +38,7 @@ jobs:
       # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
       run: cmake -DCPPTEST_COVERAGE=ON -Bbuild --toolchain cmake/iar-toolchain.cmake
 
-    - name: Build
+    - name: Build 
       working-directory: ${{github.workspace}}
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
