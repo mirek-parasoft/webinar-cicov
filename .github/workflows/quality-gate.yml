@@ -89,7 +89,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload entire repository
-          path: './coverage'
+          path: './.coverage'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
