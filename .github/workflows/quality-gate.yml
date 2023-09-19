@@ -81,6 +81,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: self-hosted
     steps:
+      - name: Rename Coverage Report
+        working-directory: ${{github.workspace}}
+        shell: bash
+        # Execute the build.  You can specify a specific target with "--target <NAME>"
+        run: ls -la
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Pages
