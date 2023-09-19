@@ -95,6 +95,7 @@ function (cpptest_enable_coverage)
       -exclude "regex:*/CppUTest/*"
       -ignore "regex:*/CppUTest/*"
       -ignore "regex:*/Platforms/*"
+      -ignore "regex:${CPPTEST_SOURCE_DIR}/*TestSuite.cxx"
       -ignore "regex:${CPPTEST_BINARY_DIR}/*")
 
   # Use advanced settings file for cpptestcc, if exists
