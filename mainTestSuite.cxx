@@ -26,3 +26,8 @@ TEST(main, main_3)
 {
     CHECK_EQUAL(getValue(1,1), 1);
 }
+
+TEST(main, main_4)
+{
+    CHECK_EQUAL(getValue(-1,1), 1);
+}
