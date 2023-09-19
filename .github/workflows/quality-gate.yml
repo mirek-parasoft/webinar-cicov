@@ -80,25 +80,18 @@ jobs:
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: NUMBER=$(cat .coverage/coverage.txt | grep "TOTAL" | sed -n 's/.*LC=\([0-9]*\)%.*/\1/p') && if [ $NUMBER -lt 80 ]; then echo "Line coverage quality gate failed"; false; else echo "Line coverage quality gate passed"; false; fi
 
-  deploy:
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: self-hosted
-    steps:
-      - name: Rename Coverage Report
-        working-directory: ${{github.workspace}}
-        shell: bash
-        # Execute the build.  You can specify a specific target with "--target <NAME>"
-        run: ls -la
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          # Upload entire repository
-          path: ${{github.workspace}}/.coverage
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+    - name: Rename Coverage Report
+      working-directory: ${{github.workspace}}
+      shell: bash
+      # Execute the build.  You can specify a specific target with "--target <NAME>"
+      run: ls -la
+    - name: Setup Pages
+      uses: actions/configure-pages@v3
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v2
+      with:
+        # Upload entire repository
+        path: ${{github.workspace}}/.coverage
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2
