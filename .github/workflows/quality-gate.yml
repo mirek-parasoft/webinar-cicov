@@ -78,7 +78,7 @@ jobs:
       working-directory: ${{github.workspace}}/.coverage
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
-      run: ls -la
+      run: NUMBER=$(cat .coverage/coverage.txt | grep "TOTAL" | sed -n 's/.*LC=\([0-9]*\)%.*/\1/p') && if [ $NUMBER -lt 80 ]; then echo "Line coverage quality gate failed"; false; else echo "Line coverage quality gate passed"; false; fi
 
   deploy:
     needs: build
