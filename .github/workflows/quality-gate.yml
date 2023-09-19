@@ -73,6 +73,13 @@ jobs:
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: mv coverage.html index.html
+
+      name: Check Coverage Gate
+        working-directory: ${{github.workspace}}/.coverage
+        shell: bash
+        # Execute the build.  You can specify a specific target with "--target <NAME>"
+        run: NUMBER=$(cat .coverage/coverage.txt | grep "TOTAL" | sed -n 's/.*LC=\([0-9]*\)%.*/\1/p') && if [ $NUMBER -lt 80 ]; then echo "Line coverage quality gate failed"; echo "Required result: 75%, achieved $NUMBER";  echo "Check report for more details: https://mirek-parasoft.github.io/webinar-cicov/" ; else echo "Line coverage quality gate passed"; echo "Required result: 75 achieved: $NUMBER";  false; fi
+
   
   deploy:
     needs: build
