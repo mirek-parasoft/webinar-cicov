@@ -74,7 +74,7 @@ jobs:
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: mv coverage.html index.html
 
-      name: Check Coverage Gate
+    - name: Check Coverage Gate
         working-directory: ${{github.workspace}}/.coverage
         shell: bash
         # Execute the build.  You can specify a specific target with "--target <NAME>"
