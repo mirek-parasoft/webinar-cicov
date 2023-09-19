@@ -86,13 +86,6 @@ jobs:
         shell: bash
         # Execute the build.  You can specify a specific target with "--target <NAME>"
         run: ls -la
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: Rename Coverage Report
-        working-directory: ${{github.workspace}}
-        shell: bash
-        # Execute the build.  You can specify a specific target with "--target <NAME>"
-        run: ls -la
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
