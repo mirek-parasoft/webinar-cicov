@@ -61,3 +61,8 @@ jobs:
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: make cpptestcov-compute && make cpptestcov-report
+
+    - name: upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with: 
+        path: './.coverage/coverage.html'
