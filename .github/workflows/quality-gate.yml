@@ -91,9 +91,14 @@ jobs:
       id: deployment
       uses: actions/deploy-pages@v2
 
-    - name: Check Coverage Gate
+    - name: Check Line Coverage Gate
       working-directory: ${{github.workspace}}
-      continue-on-error: true
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
-      run: NUMBER=$(cat .coverage/coverage.txt | grep "TOTAL" | sed -n 's/.*LC=\([0-9]*\)%.*/\1/p') && if [ $NUMBER -lt 80 ]; then echo "Line coverage quality gate failed"; echo "Expected result 80%, echieved $NUMBER"; echo "Check html report https://mirek-parasoft.github.io/webinar-cicov/"; false; else echo "Line coverage quality gate passed"; false; fi
+      run: NUMBER=$(cat .coverage/coverage.txt | grep "TOTAL" | sed -n 's/.*LC=\([0-9]*\)%.*/\1/p') && if [ $NUMBER -lt 80 ]; then echo "Line coverage quality gate failed"; echo "Expected result 80%, echieved $NUMBER%"; echo "Check html report https://mirek-parasoft.github.io/webinar-cicov/"; false; else echo "Line coverage quality gate passed"; false; fi
+      
+    - name: Check MCDC Coverage Gate
+      working-directory: ${{github.workspace}}
+      shell: bash
+      # Execute the build.  You can specify a specific target with "--target <NAME>"
+      run: NUMBER=$(cat .coverage/coverage.txt | grep "TOTAL" | sed -n 's/.*MCDC=\([0-9]*\)%.*/\1/p') && if [ $NUMBER -lt 80 ]; then echo "Line coverage quality gate failed"; echo "Expected result 80%, echieved $NUMBER%"; echo "Check html report https://mirek-parasoft.github.io/webinar-cicov/"; false; else echo "Line coverage quality gate passed"; false; fi
