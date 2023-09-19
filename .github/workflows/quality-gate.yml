@@ -6,6 +6,12 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     # The CMake configure and build commands are platform agnostic and should work equally
@@ -62,7 +68,27 @@ jobs:
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: make cpptestcov-compute && make cpptestcov-report
 
-    - name: upload artifact
-      uses: actions/upload-pages-artifact@v1
-      with: 
-        path: './.coverage/coverage.html'
+    - name: Rename Coverage Report
+      working-directory: ${{github.workspace}}
+      shell: bash
+      # Execute the build.  You can specify a specific target with "--target <NAME>"
+      run: mv .coverage/coverage.html .coverage/index.html
+  
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # Upload entire repository
+          path: './coverage'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
