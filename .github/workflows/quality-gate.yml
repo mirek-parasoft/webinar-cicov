@@ -54,7 +54,7 @@ jobs:
       working-directory: ${{github.workspace}}
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
-      run: ./cspybat_sim.sh build/hello-world.elf'
+      run: ./cspybat_sim.sh build/hello-world.elf
 
     - name: Generate Coverage Reports
       working-directory: ${{github.workspace}}/build
