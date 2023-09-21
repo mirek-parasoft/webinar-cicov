@@ -1,6 +1,6 @@
 #include "CppUTest/TestHarness.h"
+#include "include/main.hxx"
 
-int getValue(int, int);
 
 TEST_GROUP(main)
 { 
