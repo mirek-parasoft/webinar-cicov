@@ -13,12 +13,13 @@ void teardown()
 }
 };
 
-/*
+
 TEST(sensorUtil, smokeTest_reqCIC_1)
 {
     int buf[5] = {1,2,3,4,5};
     CHECK_EQUAL(getAvarage(buf,5), 3);
 }
+
 
 TEST(sensorUtil, nullTest_reqCIC_2)
 {
@@ -31,4 +32,3 @@ TEST(sensorUtil, zerroSize_reqCIC_3)
     int buf[] = {1};
     CHECK_EQUAL(getAvarage(buf,0), 0);
 }
-*/
