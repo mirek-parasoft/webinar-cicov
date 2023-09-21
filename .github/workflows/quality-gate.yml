@@ -5,6 +5,8 @@ on: [push]
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
+  BUILD_ID: build_1
+
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -90,6 +92,18 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v2
+
+    - name: Generate DTP reports
+      working-directory: ${{github.workspace}}
+      shell: bash
+      # Execute the build.  You can specify a specific target with "--target <NAME>"
+      run: cpptestcov report dtp-details -scm -project webinar-cicov -build ${BUILD_ID} .coverage > .coverage/dtp-details.xml && cpptestcov report dtp-summary -project webinar-cicov -build ${BUILD_ID} .coverage > .coverage/dtp-summary.xml && cpptestcov report dtp-gtest -scm -project webinar-cicov -build ${BUILD_ID} cpputest_main.xml > .coverage/dtp-gtest.xml
+
+    - name: Publish to DTP
+      working-directory: ${{github.workspace}}
+      shell: bash
+      # Execute the build.  You can specify a specific target with "--target <NAME>"
+      run: cpptestcov publish  -settings dtp.settings .coverage/dtp-details.xml .coverage/dtp-summary.xml .coverage/dtp-gtest.xml
 
     - name: Check Line Coverage Gate
       working-directory: ${{github.workspace}}

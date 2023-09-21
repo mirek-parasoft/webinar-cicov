@@ -1,2 +1,6 @@
 .coverage/*
 build/*
+cpptest_results.utlog
+.gitignore
+cpputest_main.xml
+.cpptest/*

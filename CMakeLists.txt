@@ -20,7 +20,7 @@ add_executable(hello-world
 target_link_libraries(hello-world PRIVATE CppUTest)
 
 # Set the target's compiler options
-target_compile_options(hello-world PRIVATE -I${CMAKE_SOURCE_DIR} --cpu=Cortex-M4 --fpu=None --dlib_config full)   
+target_compile_options(hello-world PRIVATE -I${CMAKE_SOURCE_DIR} -I$ENV{CPPTEST_HOME}/runtime/include --cpu=Cortex-M4 --fpu=None --dlib_config full)   
    
 # Set the target's linker options
 target_link_options(hello-world PRIVATE --semihosting --config ${CMAKE_SOURCE_DIR}/stm32f407xG.icf --map linker.map)
