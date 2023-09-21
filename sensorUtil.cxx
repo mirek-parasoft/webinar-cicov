@@ -12,4 +12,4 @@ int getAvarage(int * buf, int count) {
     }
 
     return (int) res/count;
-}
+} 
