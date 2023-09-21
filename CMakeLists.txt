@@ -14,7 +14,9 @@ add_subdirectory(CppUTest/src/CppUTest)
 add_executable(hello-world
    # Target sources
    main.cxx
+   sensorUtil.cxx
    mainTestSuite.cxx
+   sensorUtilTestSuite.cxx
    )
 
 target_link_libraries(hello-world PRIVATE CppUTest)

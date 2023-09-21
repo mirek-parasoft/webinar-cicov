@@ -1,0 +1,1 @@
+int getAvarage(int *, int);
