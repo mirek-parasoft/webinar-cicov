@@ -99,7 +99,7 @@ jobs:
       working-directory: ${{github.workspace}}
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
-      run: cpptestcov report dtp-details -scm -project webinar-cicov -build ${BUILD_ID} .coverage > .coverage/dtp-details.xml && cpptestcov report dtp-summary -project webinar-cicov -build ${BUILD_ID} .coverage > .coverage/dtp-summary.xml && cpptestcov report dtp-gtest -scm -project webinar-cicov -build ${BUILD_ID} cpputest_main.xml > .coverage/dtp-gtest.xml
+      run: cpptestcov report dtp-details -scm -project webinar-cicov -build ${BUILD_ID} .coverage > .coverage/dtp-details.xml && cpptestcov report dtp-summary -project webinar-cicov -build ${BUILD_ID} .coverage > .coverage/dtp-summary.xml && cpptestcov report dtp-gtest -scm -project webinar-cicov -build ${BUILD_ID} cpputest_sensorUtil.xml cpputest_main.xml > .coverage/dtp-gtest.xml
 
     - name: Publish to DTP
       working-directory: ${{github.workspace}}
