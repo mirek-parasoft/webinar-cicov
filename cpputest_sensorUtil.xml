@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="localhost" name="sensorUtil" tests="1" time="0.010" timestamp="Thu Sep 21 08:51:52 2023
+<testsuite errors="0" failures="2" hostname="localhost" name="sensorUtil" tests="3" time="0.090" timestamp="Thu Sep 21 10:55:10 2023
 ">
 <properties>
 </properties>
-<testcase classname="sensorUtil" name="smokeTest" time="0.000">
+<testcase classname="sensorUtil" name="zerroSize_reqCIC_3" time="0.040">
+<failure message="/workspaces/webinar-cicov/sensorUtilTestSuite.cxx:31: expected [0]{newline}	but was  [3]{newline}	difference starts at position 0 at: [          3         ]{newline}	                                               ^" type="AssertionFailedError">
+</failure>
+</testcase>
+<testcase classname="sensorUtil" name="nullTest_reqCIC_2" time="0.030">
+<failure message="/workspaces/webinar-cicov/sensorUtilTestSuite.cxx:25: expected [0]{newline}	but was  [3]{newline}	difference starts at position 0 at: [          3         ]{newline}	                                               ^" type="AssertionFailedError">
+</failure>
+</testcase>
+<testcase classname="sensorUtil" name="smokeTest_reqCIC_1" time="0.010">
 </testcase>
 <system-out></system-out>
 <system-err></system-err>
