@@ -1,7 +1,8 @@
 name: CMake
 
 on:
-  pull_request:
+  # Triggers the workflow on push or pull request events but only for the master (main) branch.
+  push:
     branches: [ master, main ]
 
 env:
@@ -96,6 +97,18 @@ jobs:
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v2
+
+    - name: Generate DTP reports
+      working-directory: ${{github.workspace}}
+      shell: bash
+      # Execute the build.  You can specify a specific target with "--target <NAME>"
+      run: cpptestcov report dtp-details -scm -project webinar-cicov -build ${BUILD_ID} .coverage > .coverage/dtp-details.xml && cpptestcov report dtp-summary -project webinar-cicov -build ${BUILD_ID} .coverage > .coverage/dtp-summary.xml && cpptestcov report dtp-gtest -scm -project webinar-cicov -build ${BUILD_ID} cpputest_sensorUtil.xml cpputest_main.xml > .coverage/dtp-gtest.xml
+
+    - name: Publish to DTP
+      working-directory: ${{github.workspace}}
+      shell: bash
+      # Execute the build.  You can specify a specific target with "--target <NAME>"
+      run: cpptestcov publish  -settings dtp.settings .coverage/dtp-details.xml .coverage/dtp-summary.xml .coverage/dtp-gtest.xml
 
     - name: Check Line Coverage Gate
       working-directory: ${{github.workspace}}
