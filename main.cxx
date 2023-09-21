@@ -4,10 +4,12 @@
 #include "CppUTest/CommandLineTestRunner.h"
 #include "CppUTest/TestPlugin.h"
 #include "CppUTest/TestRegistry.h"
+#include "cpptest/extensions/cpputest/results_listener.h"
 
 
 int main(int ac, char** av)
 {
+    const char * av_override[] = { "exe", "-v", "-ojunit" }; //turn on verbose mode
     //MyDummyComparator dummyComparator;
     //MockSupportPlugin mockPlugin;
     //IEEE754ExceptionsPlugin ieee754Plugin;
@@ -15,7 +17,8 @@ int main(int ac, char** av)
     //mockPlugin.installComparator("MyDummyType", dummyComparator);
     //TestRegistry::getCurrentRegistry()->installPlugin(&mockPlugin);
     //TestRegistry::getCurrentRegistry()->installPlugin(&ieee754Plugin);
-    return CommandLineTestRunner::RunAllTests(0, (char **)0);
+    //TestRegistry::getCurrentRegistry()->installPlugin(&cpptestPlugin);
+    return CommandLineTestRunner::RunAllTests(3, (char **)av_override);
 }
 
 

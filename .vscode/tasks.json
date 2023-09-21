@@ -2,8 +2,8 @@
 	"version": "2.0.0",
     "options": {
         "env": {
-             "BUILD_ID": "build_3",
-             "DTP_PROJECT": "ICEORYX"
+             "BUILD_ID": "build_1",
+             "DTP_PROJECT": "webinar-cicov"
         }
    },
  
@@ -30,6 +30,21 @@
             "label": "Delete build",
             "type": "shell",
             "command": "bash -c 'rm -fr build'",
+            "group": "build"
+        }
+        {
+            "label": "Generate DTP reports",
+            "type": "shell",
+            "command": "bash -c 'cpptestcov report dtp-details -scm -project ${DTP_PROJECT} -build ${BUILD_ID} .coverage > .coverage/dtp-details.xml && \
+                                 cpptestcov report dtp-summary -project ${DTP_PROJECT} -build ${BUILD_ID} .coverage > .coverage/dtp-summary.xml && \
+								 cpptestcov report dtp-gtest   -scm -project ${DTP_PROJECT} -build ${BUILD_ID} cpputest_main.xml > .coverage/dtp-gtest.xml'"
+			                     ,
+            "group": "build"
+        }
+		{
+            "label": "Publish (DTP)",
+            "type": "shell",
+            "command": "bash -c 'cpptestcov publish  -settings dtp.settings .coverage/dtp-details.xml .coverage/dtp-summary.xml .coverage/dtp-gtest.xml'",
             "group": "build"
         }
 

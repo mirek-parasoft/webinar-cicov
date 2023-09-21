@@ -29,5 +29,5 @@ TEST(main, main_3)
 
 TEST(main, main_4)
 {
-    CHECK_EQUAL(getValue(-1,1), 1);
+    CHECK_EQUAL(getValue(-1,1), 14);
 }

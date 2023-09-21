@@ -51,7 +51,7 @@ set(CppUTest_headers
 )
 
 add_library(CppUTest STATIC ${CppUTest_src} ${CppUTest_headers})
-target_compile_options(CppUTest PUBLIC -I${CppUTestRootDirectory}/include)
+target_compile_options(CppUTest PUBLIC -I${CppUTestRootDirectory}/include --dlib_config full)
 
 if (WIN32)
     target_link_libraries(CppUTest winmm.lib)
