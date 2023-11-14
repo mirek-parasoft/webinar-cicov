@@ -36,6 +36,16 @@ jobs:
       # We'll use this as our working directory for all subsequent commands
       run: cmake -E make_directory ${{github.workspace}}/build
 
+    - name: Set build id
+      shell: bash
+      working-directory: ${{github.workspace}}
+      run: echo "build_id=build-$(date +'%Y-%m-%d-%H-%M')" >> $GITHUB_ENV 
+
+    - name: Echo build id
+      shell: bash
+      working-directory: ${{github.workspace}}
+      run: echo "The new build id is ${{ env.build_id }}"
+    
     - name: CMake version
       working-directory: ${{github.workspace}}
       shell: bash
@@ -96,7 +106,7 @@ jobs:
       working-directory: ${{github.workspace}}
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
-      run: cpptestcov report dtp-details -scm -project webinar-cicov -build ${BUILD_ID} .coverage > .coverage/dtp-details.xml && cpptestcov report dtp-summary -project webinar-cicov -build ${BUILD_ID} .coverage > .coverage/dtp-summary.xml && cpptestcov report dtp-gtest -scm -project webinar-cicov -build ${BUILD_ID} cpputest_sensorUtil.xml cpputest_main.xml > .coverage/dtp-gtest.xml
+      run: cpptestcov report dtp-details -scm -project webinar-cicov -build ${{ env.build_id }} .coverage > .coverage/dtp-details.xml && cpptestcov report dtp-summary -project webinar-cicov -build ${{ env.build_id }} .coverage > .coverage/dtp-summary.xml && cpptestcov report dtp-gtest -scm -project webinar-cicov -build ${{ env.build_id }} cpputest_sensorUtil.xml cpputest_main.xml > .coverage/dtp-gtest.xml
 
     - name: Publish to DTP
       working-directory: ${{github.workspace}}
