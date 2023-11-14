@@ -77,12 +77,6 @@ jobs:
       run: make cpptestcov-compute && make cpptestcov-report
 
     - name: Rename Coverage Report
-      working-directory: ${{github.workspace}}/.coverage/report_html
-      shell: bash
-      # Execute the build.  You can specify a specific target with "--target <NAME>"
-      run: mv coverage.html index.html
-
-    - name: Rename Coverage Report
       working-directory: ${{github.workspace}}
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
