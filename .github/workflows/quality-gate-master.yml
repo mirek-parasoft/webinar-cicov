@@ -77,7 +77,7 @@ jobs:
       run: make cpptestcov-compute && make cpptestcov-report
 
     - name: Rename Coverage Report
-      working-directory: ${{github.workspace}}/.coverage
+      working-directory: ${{github.workspace}}/.coverage/report_html
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: mv coverage.html index.html
@@ -93,7 +93,7 @@ jobs:
       uses: actions/upload-pages-artifact@v2
       with:
         # Upload entire repository
-        path: ${{github.workspace}}/.coverage
+        path: ${{github.workspace}}/.coverage/report_html
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v2
