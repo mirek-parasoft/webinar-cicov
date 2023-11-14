@@ -11,9 +11,7 @@
         {
             "label": "Build & Run",
             "type": "shell",
-            "command": "bash -c 'cmake -DCPPTEST_COVERAGE=ON -Bbuild --toolchain cmake/iar-toolchain.cmake && cmake --build build -- VERBOSE=ON && \
-                        rm -rf build/cpptest-coverage/simpleProject/*.clog && \
-                        ./cspybat_sim.sh build/hello-world.elf'",
+            "command": "bash -c 'cmake -DCPPTEST_COVERAGE=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -Bbuild --toolchain cmake/iar-toolchain.cmake && cmake --build build -- VERBOSE=ON && rm -rf build/cpptest-coverage/simpleProject/*.clog && ./cspybat_sim.sh build/hello-world.elf'",
             "group": "build"
         },
         {
@@ -33,16 +31,14 @@
             "type": "shell",
             "command": "bash -c 'rm -fr build'",
             "group": "build"
-        }
+        },
         {
             "label": "Generate DTP reports",
             "type": "shell",
-            "command": "bash -c 'cpptestcov report dtp-details -scm -project ${DTP_PROJECT} -build ${BUILD_ID} .coverage > .coverage/dtp-details.xml && \
-                                 cpptestcov report dtp-summary -project ${DTP_PROJECT} -build ${BUILD_ID} .coverage > .coverage/dtp-summary.xml && \
-								 cpptestcov report dtp-gtest   -scm -project ${DTP_PROJECT} -build ${BUILD_ID} cpputest_main.xml cpputest_sensorUtil.xml > .coverage/dtp-gtest.xml'"
+            "command": "bash -c 'cpptestcov report dtp-details -scm -project ${DTP_PROJECT} -build ${BUILD_ID} .coverage > .coverage/dtp-details.xml && cpptestcov report dtp-summary -project ${DTP_PROJECT} -build ${BUILD_ID} .coverage > .coverage/dtp-summary.xml && cpptestcov report dtp-gtest   -scm -project ${DTP_PROJECT} -build ${BUILD_ID} cpputest_main.xml cpputest_sensorUtil.xml > .coverage/dtp-gtest.xml'"
 			                     ,
             "group": "build"
-        }
+        },
 		{
             "label": "Publish (DTP)",
             "type": "shell",
