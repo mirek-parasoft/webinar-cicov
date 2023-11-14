@@ -4,5 +4,7 @@ cpptest_results.utlog
 .gitignore
 cpputest_main.xml
 .cpptest/*
-*.*xml
 reports/*
+cpputest_*.xml
+*.xml
+

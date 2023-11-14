@@ -1,6 +1,5 @@
 #include "include/sensorUtil.hxx"
 
-
 int getAvarage(int * buf, int count) {
     int res = 0;
 
