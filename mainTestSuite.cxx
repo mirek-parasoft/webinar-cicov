@@ -39,3 +39,9 @@ TEST(main, main_5_reqCIC_6)
 {
     CHECK_EQUAL(getValue(1,-1), 1);
 }
+
+
+TEST(main, main_5_reqCIC_7)
+{
+    CHECK_EQUAL(getValue(1,-1), 1);
+}
