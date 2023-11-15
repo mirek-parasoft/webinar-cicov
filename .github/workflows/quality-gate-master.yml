@@ -78,8 +78,22 @@ jobs:
         compilerConfig: iccarm_9_20
         # Uncomment if you are using C/C++test 2020.2 to generate a SARIF report:
         # reportFormat: xml,html,custom
-        testConfig: 'builtin://MISRA C 2023 (MISRA C 2012)'
+        testConfig: 'MISRA C 2023 Quality Gate.properties'
         additionalParams: '-resource /actions-runner/_work/webinar-cicov/webinar-cicov/sensorUtil.cxx -settings dtp.settings -publish'
+
+    - name: Upload results (SARIF)
+      if: always()
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: reports/report.sarif
+
+    # Uploads an archive that includes all report files (.xml, .html, .sarif).
+    - name: Archive reports
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: CpptestReports
+        path: reports/*.*
 
     - name: Coverage Logs Cleanup
       working-directory: ${{github.workspace}}/build
