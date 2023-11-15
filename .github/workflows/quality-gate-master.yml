@@ -78,7 +78,7 @@ jobs:
         # Uncomment if you are using C/C++test 2020.2 to generate a SARIF report:
         # reportFormat: xml,html,custom
         testConfig: 'builtin://MISRA C 2023 (MISRA C 2012)'
-        additionalParams: '-resource /actions-runner/_work/webinar-cicov/webinar-cicov/sensorUtil.cxx -settings dtp.settings -publish  '
+        additionalParams: '-resource /actions-runner/_work/webinar-cicov/webinar-cicov/sensorUtil.cxx -settings dtp.settings -publish'
 
     - name: Coverage Logs Cleanup
       working-directory: ${{github.workspace}}/build
