@@ -60,13 +60,25 @@ jobs:
       # Note the current convention is to use the -S and -B options here to specify source 
       # and build directories, but this is only available with CMake 3.13 and higher.  
       # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
-      run: cmake -DCPPTEST_COVERAGE=ON -Bbuild --toolchain cmake/iar-toolchain.cmake
+      run: cmake -DCPPTEST_COVERAGE=ON -Bbuild -DCMAKE_EXPORT_COMPILE_COMMANDS=1 --toolchain cmake/iar-toolchain.cmake
 
     - name: Build 
       working-directory: ${{github.workspace}}
       shell: bash
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: cmake --build build -- VERBOSE=ON
+
+- name: Run C/C++test
+      # Use the 'run-cpptest-action' GitHub action.
+      uses: parasoft/run-cpptest-action@2.0.1
+      # Optional parameters for 'run-cpptest-action'.
+      with:
+        # For CMake-based projects, use a compile_commands.json file as the input for analysis. 
+        input: build/compile_commands.json
+        # Uncomment if you are using C/C++test 2020.2 to generate a SARIF report:
+        # reportFormat: xml,html,custom
+        testConfig: 'builtin://MISRA C 2023 (MISRA C 2012)'
+        additionalParams: '-resource /actions-runner/_work/webinar-cicov/webinar-cicov/sensorUtil.cxx -settings dtp.settings -publish  '
 
     - name: Coverage Logs Cleanup
       working-directory: ${{github.workspace}}/build
