@@ -15,9 +15,7 @@ env:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+
 
 jobs:
   build:
@@ -32,8 +30,10 @@ jobs:
       # required for all workflows
       security-events: write
       # only required for workflows in private repositories
-      actions: read
-      contents: read
+      actions: write
+      contents: write
+      pages: write
+      id-token: write
 
     steps:
     - uses: actions/checkout@v2
