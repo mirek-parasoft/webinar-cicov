@@ -27,6 +27,13 @@ jobs:
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: self-hosted
     continue-on-error: true
+     # Specifies required permissions for upload-sarif action
+    permissions:
+      # required for all workflows
+      security-events: write
+      # only required for workflows in private repositories
+      actions: read
+      contents: read
 
     steps:
     - uses: actions/checkout@v2
@@ -81,11 +88,11 @@ jobs:
         testConfig: 'MISRA C 2023 Quality Gate.properties'
         additionalParams: '-resource /actions-runner/_work/webinar-cicov/webinar-cicov/sensorUtil.cxx -settings dtp.settings -publish'
 
-    # #- name: Upload results (SARIF)
-    # #  if: always()
-    # #  uses: github/codeql-action/upload-sarif@v2
-    #   with:
-    #     sarif_file: reports/report.sarif
+    - name: Upload results (SARIF)
+      if: always()
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: reports/report.sarif
 
     # Uploads an archive that includes all report files (.xml, .html, .sarif).
     - name: Archive reports
