@@ -10,7 +10,7 @@ env:
   BUILD_TYPE: Release
   BUILD_ID: build_3
   LINE_COV_GATE: 90
-  MCDC_COV_GATE: 50
+  MCDC_COV_GATE: 90
 
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
