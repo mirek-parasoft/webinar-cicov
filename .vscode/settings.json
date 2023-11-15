@@ -1,0 +1,3 @@
+{
+    "cpptest.testConfiguration": "${workspaceFolder}/MISRA C 2023 Quality Gate.properties"
+}

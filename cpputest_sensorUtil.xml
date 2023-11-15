@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="localhost" name="sensorUtil" tests="3" time="0.020" timestamp="Thu Sep 21 12:47:38 2023
+<testsuite errors="0" failures="0" hostname="localhost" name="sensorUtil" tests="2" time="0.020" timestamp="Wed Nov 15 08:20:57 2023
 ">
 <properties>
 </properties>
-<testcase classname="sensorUtil" name="zerroSize_reqCIC_3" time="0.000">
-</testcase>
-<testcase classname="sensorUtil" name="nullTest_reqCIC_2" time="0.000">
+<testcase classname="sensorUtil" name="nullTest_reqCIC_2" time="0.010">
 </testcase>
 <testcase classname="sensorUtil" name="smokeTest_reqCIC_1" time="0.010">
 </testcase>
