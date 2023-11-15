@@ -102,6 +102,13 @@ jobs:
       id: deployment
       uses: actions/deploy-pages@v2
 
+    - name: Archive coverage
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: CpptestCoverage
+        path: ${{github.workspace}}/.coverage/
+
     - name: Generate DTP reports
       working-directory: ${{github.workspace}}
       shell: bash
