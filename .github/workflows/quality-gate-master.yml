@@ -70,7 +70,7 @@ jobs:
       # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: cmake --build build -- VERBOSE=ON
 
-    - name: Run C/C++test
+    - name: MISRA C 2023 Quality Gate
       # Use the 'run-cpptest-action' GitHub action.
       uses: parasoft/run-cpptest-action@2.0.1
       # Optional parameters for 'run-cpptest-action'.
