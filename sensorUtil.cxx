@@ -1,6 +1,5 @@
 #include "include/sensorUtil.hxx"
 
-/*
 int32_t getAvarage(int32_t * buf, int32_t count) {
     int res = 0;
 
@@ -14,4 +13,3 @@ int32_t getAvarage(int32_t * buf, int32_t count) {
 
     return (int32_t) res/count;
 } 
-*/

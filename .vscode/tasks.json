@@ -11,7 +11,7 @@
         {
             "label": "Build & Run",
             "type": "shell",
-            "command": "bash -c 'cmake -DCPPTEST_COVERAGE=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -Bbuild --toolchain cmake/iar-toolchain.cmake && cmake --build build -- VERBOSE=ON && rm -rf build/cpptest-coverage/simpleProject/*.clog && ./cspybat_sim.sh build/hello-world.elf'",
+            "command": "bash -c 'cmake -DCPPTEST_COVERAGE=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -Bbuild --toolchain cmake/iar-toolchain.cmake && cmake --build build -- VERBOSE=ON && rm -rf build/cpptest-coverage/simpleProject/*.clog && ./cspybat_sim.sh build/hello-world.elf && cd build && make cpptestcov-compute && make cpptestcov-report'",
             "group": "build"
         },
         {
