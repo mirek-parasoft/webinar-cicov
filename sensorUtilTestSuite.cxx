@@ -26,10 +26,9 @@ TEST(sensorUtil, nullTest_reqCIC_2)
     int * buf = 0;
     CHECK_EQUAL(getAvarage(buf,5), 0);
 }
-/*
+
 TEST(sensorUtil, zerroSize_reqCIC_3)
 {
     int buf[] = {1};
     CHECK_EQUAL(getAvarage(buf,0), 0);
 }
-*/
